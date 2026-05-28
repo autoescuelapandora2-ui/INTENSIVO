@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso Intensivo · Autoescuela PANDORA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --azul: #2228A2;
+    --rojo: #E8192C;
+    --papel: #F6F5F0;
+    --oscuro: #1E1E1E;
+    --blanco: #ffffff;
+  }
+
+  body {
+    background-color: var(--papel);
+    background-image:
+      linear-gradient(var(--azul) 1px, transparent 1px),
+      linear-gradient(90deg, var(--azul) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 0 0 60px 0;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: rgba(246, 245, 240, 0.92);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .mancha {
+    position: fixed;
+    border-radius: 50%;
+    background: var(--rojo);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .mancha-1 { width: 400px; height: 400px; top: -100px; right: -100px; }
+  .mancha-2 { width: 250px; height: 250px; bottom: 40px; left: -80px; }
+
+  .contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    padding: 40px 0 24px;
+    text-align: center;
+  }
+
+  .etiqueta-sup {
+    display: inline-block;
+    background: var(--oscuro);
+    color: var(--blanco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--azul);
+    display: block;
+    letter-spacing: 2px;
+  }
+
+  .subtitulo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--oscuro);
+    opacity: 0.6;
+    margin-top: 6px;
+  }
+
+  /* BLOQUE PRINCIPAL INTENSIVO */
+  .hero-intensivo {
+    background: var(--rojo);
+    padding: 32px 24px 28px;
+    margin: 20px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-intensivo::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .hero-intensivo::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .hero-etiqueta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+
+  .hero-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    line-height: 0.9;
+    color: var(--blanco);
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-dias {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 3px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* PUNTOS DESTACADOS */
+  .puntos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .punto {
+    background: rgba(255,255,255,0.12);
+    padding: 14px 14px 12px;
+  }
+
+  .punto-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--blanco);
+    line-height: 1;
+  }
+
+  .punto-txt {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+
+  /* BOTÓN CTA */
+  .btn-cta {
+    display: block;
+    width: 100%;
+    background: var(--oscuro);
+    color: var(--blanco);
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    padding: 22px 20px;
+    margin-top: 12px;
+    transition: background 0.15s, transform 0.1s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-cta span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 3px;
+  }
+
+  .btn-cta:active {
+    background: #111;
+    transform: scale(0.98);
+  }
+
+  .divider {
+    height: 1.5px;
+    background: var(--azul);
+    opacity: 0.15;
+    margin: 28px 0;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  .footer-dir {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--oscuro);
+    opacity: 0.4;
+    line-height: 1.7;
+  }
+
+  .footer-num {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--azul);
+    color: var(--blanco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body { background-color: #111117; }
+    body::before { background-color: rgba(17,17,23,0.92); }
+    .logo { color: #5b62e0; }
+    .subtitulo { color: rgba(255,255,255,0.5); }
+    .btn-cta { background: #1a1a24; border: 1.5px solid rgba(255,255,255,0.1); }
+    .footer-dir { color: rgba(255,255,255,0.3); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mancha mancha-1"></div>
+<div class="mancha mancha-2"></div>
+
+<div class="contenido">
+
+  <header>
+    <div class="etiqueta-sup">Autoescuela · El Puerto de Santa María</div>
+    <span class="logo">PANDORA</span>
+    <p class="subtitulo">Permiso B · Solo teoría</p>
+  </header>
+
+  <div class="hero-intensivo">
+    <div class="hero-etiqueta">Consigue el carnet en tiempo récord</div>
+    <div class="hero-titulo">CURSO<br>INTENSIVO</div>
+    <div class="hero-dias">10 · 20 DÍAS</div>
+    <p class="hero-desc">Solo la parte teórica. Clases entre 10 a 20 días para que apruebes el examen oficial de la DGT cuanto antes. <strong style="color:white;">Las prácticas de conducción van para septiembre.</strong></p>
+
+    <div style="background:rgba(255,255,255,0.15);border-left:3px solid white;padding:12px 14px;margin:16px 0 4px;position:relative;z-index:1;">
+      <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:white;letter-spacing:0.3px;">⚠️ Este curso es <u>solo para la teoría</u>. Las prácticas de conducción se contratan aparte.</p>
+    </div>
+
+    <div class="puntos">
+      <div class="punto">
+        <div class="punto-num">10</div>
+        <div class="punto-txt">días mínimo para acabar</div>
+      </div>
+      <div class="punto">
+        <div class="punto-num">20</div>
+        <div class="punto-txt">días máximo estimado</div>
+      </div>
+      <div class="punto">
+        <div class="punto-num">B</div>
+        <div class="punto-txt">Solo parte teórica</div>
+      </div>
+      <div class="punto">
+        <div class="punto-num">
+          <svg width="120" height="22" viewBox="0 0 120 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="clip60">
+                <rect x="95" y="0" width="14" height="22"/>
+              </clipPath>
+            </defs>
+            <!-- Estrella 1 -->
+            <polygon points="11,1 13.5,8 21,8 15,12.5 17.5,20 11,15.5 4.5,20 7,12.5 1,8 8.5,8" fill="white"/>
+            <!-- Estrella 2 -->
+            <polygon points="35,1 37.5,8 45,8 39,12.5 41.5,20 35,15.5 28.5,20 31,12.5 25,8 32.5,8" fill="white"/>
+            <!-- Estrella 3 -->
+            <polygon points="59,1 61.5,8 69,8 63,12.5 65.5,20 59,15.5 52.5,20 55,12.5 49,8 56.5,8" fill="white"/>
+            <!-- Estrella 4 -->
+            <polygon points="83,1 85.5,8 93,8 87,12.5 89.5,20 83,15.5 76.5,20 79,12.5 73,8 80.5,8" fill="white"/>
+            <!-- Estrella 5 parcial (60%) -->
+            <polygon points="107,1 109.5,8 117,8 111,12.5 113.5,20 107,15.5 100.5,20 103,12.5 97,8 104.5,8" fill="rgba(255,255,255,0.25)"/>
+            <polygon points="107,1 109.5,8 117,8 111,12.5 113.5,20 107,15.5 100.5,20 103,12.5 97,8 104.5,8" fill="white" clip-path="url(#clip60)"/>
+          </svg>
+        </div>
+        <div class="punto-txt">Profesores cercanos</div>
+      </div>
+    </div>
+
+    <a class="btn-cta"
+       href="https://wa.me/34666999295?text=Hola%2C+me+interesa+el+curso+intensivo+del+permiso+B+(10-20+d%C3%ADas).+%C2%BFPod%C3%A9is+darme+m%C3%A1s+informaci%C3%B3n%3F"
+       target="_blank" rel="noopener">
+      Quiero información
+      <span>Te respondemos hoy mismo</span>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer>
+    <p class="footer-dir">
+      Calle Rodrigo de Bastidas, 13<br>
+      El Puerto de Santa María · Cádiz
+    </p>
+    <p class="footer-dir" style="margin-top: 10px;">
+      Lun – Jue · 10:00 a 13:00 y 17:00 a 20:00<br>
+      Viernes · 10:00 a 13:00
+    </p>
+    <span class="footer-num">Autoescuela familiar</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
